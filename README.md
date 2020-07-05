@@ -34,6 +34,16 @@ ShareFilesAndScreenshotWidgets()
 #### Directly Share ScreenShot of Widgets
 
 ```dart
+//define
+GlobalKey previewContainer = new GlobalKey();
+
+//wrap your widget with
+RepaintBoundary(
+  key: previewContainer,
+  child: YourWidget()
+),
+
+//call this function for screenshot
 ShareFilesAndScreenshotWidgets().shareScreenshot(
   previewContainer,
   originalSize,
