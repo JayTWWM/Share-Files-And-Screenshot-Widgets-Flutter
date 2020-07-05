@@ -22,6 +22,16 @@ To use this package :
 #### Take ScreenShot of Widgets
 
 ```dart
+//define
+GlobalKey previewContainer = new GlobalKey();
+
+//wrap your widget with
+RepaintBoundary(
+  key: previewContainer,
+  child: YourWidget()
+),
+
+//call this function for taking screenshot
 ShareFilesAndScreenshotWidgets()
     .takeScreenshot(previewContainer, originalSize)
     .then((Image value) {
@@ -43,7 +53,7 @@ RepaintBoundary(
   child: YourWidget()
 ),
 
-//call this function for screenshot
+//call this function for sharing screenshot
 ShareFilesAndScreenshotWidgets().shareScreenshot(
   previewContainer,
   originalSize,
