@@ -11,7 +11,6 @@ class ShareFilesAndScreenshotWidgets {
   static const MethodChannel _channel =
       const MethodChannel('channel:share_files_and_screenshot_widgets');
 
-  /// Sends a text to other apps.
   static void text(String title, String text, String mimeType) {
     Map argsMap = <String, String>{
       'title': '$title',
@@ -21,7 +20,6 @@ class ShareFilesAndScreenshotWidgets {
     _channel.invokeMethod('text', argsMap);
   }
 
-  /// Sends a file to other apps.
   static Future<void> file(
       String title, String name, List<int> bytes, String mimeType,
       {String text = ''}) async {
@@ -39,7 +37,6 @@ class ShareFilesAndScreenshotWidgets {
     _channel.invokeMethod('file', argsMap);
   }
 
-  /// Sends multiple files to other apps.
   static Future<void> files(
       String title, Map<String, List<int>> files, String mimeType,
       {String text = ''}) async {
