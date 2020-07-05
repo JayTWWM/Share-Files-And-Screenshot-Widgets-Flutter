@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.twwm.share_files_and_screenshot_widgets">
+
+    <application>
+        <provider
+            android:name="com.twwm.share_files_and_screenshot_widgets.ShareFilesAndScreenshotWidgetsFileProvider"
+            android:authorities="${applicationId}.fileprovider.share_files_and_screenshot_widgets"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/share_files_and_screenshot_widgets" />
+        </provider>
+    </application>
+</manifest>
