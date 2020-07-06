@@ -1,6 +1,6 @@
 name: share_files_and_screenshot_widgets
 description: This pub lets you share any kind of files (csv, mp4, png etc), take screenshot of the widgets you want and return as Image and share them directly as well in the form of an image.
-version: 1.0.1
+version: 1.0.2
 author: Jay Mehta <jaymehta262001@gmail.com>
 homepage: https://github.com/JayTWWM/Share-Files-And-Screenshot-Widgets-Flutter
 

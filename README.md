@@ -4,7 +4,7 @@ This pub lets you share any kind of files (csv, mp4, png etc), take screenshot o
 
 ## Usage
 
-[Example](https://github.com/JayTWWM/Share-Files-And-Screenshot-Widgets-Flutter/blob/master/example/example_app.dart)
+[Example](https://github.com/JayTWWM/Share-Files-And-Screenshot-Widgets-Flutter/blob/master/example/lib/main.dart)
 
 To use this package :
 
