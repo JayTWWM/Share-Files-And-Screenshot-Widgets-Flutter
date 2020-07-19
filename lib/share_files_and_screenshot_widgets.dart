@@ -11,6 +11,7 @@ class ShareFilesAndScreenshotWidgets {
   static const MethodChannel _channel =
       const MethodChannel('channel:share_files_and_screenshot_widgets');
 
+  /// for share related text
   static void text(String title, String text, String mimeType) {
     Map argsMap = <String, String>{
       'title': '$title',
@@ -20,6 +21,7 @@ class ShareFilesAndScreenshotWidgets {
     _channel.invokeMethod('text', argsMap);
   }
 
+  /// writing file in temporary directory
   static Future<void> file(
       String title, String name, List<int> bytes, String mimeType,
       {String text = ''}) async {
@@ -37,6 +39,7 @@ class ShareFilesAndScreenshotWidgets {
     _channel.invokeMethod('file', argsMap);
   }
 
+  /// wirting files in temporary directory
   static Future<void> files(
       String title, Map<String, List<int>> files, String mimeType,
       {String text = ''}) async {
@@ -57,6 +60,7 @@ class ShareFilesAndScreenshotWidgets {
     _channel.invokeMethod('files', argsMap);
   }
 
+  /// takes screenshot of the widget and returns Image
   Future<Image> takeScreenshot(
       GlobalKey previewContainer, int originalSize) async {
     RenderRepaintBoundary boundary =
@@ -69,6 +73,7 @@ class ShareFilesAndScreenshotWidgets {
     return Image.memory(pngBytes.buffer.asUint8List());
   }
 
+  /// takes screenshot and invokes share
   shareScreenshot(GlobalKey previewContainer, int originalSize, String title,
       String name, String mimeType,
       {String text = ''}) async {
@@ -86,6 +91,7 @@ class ShareFilesAndScreenshotWidgets {
     }
   }
 
+  /// share any type of file using this function
   shareFile(String title, String name, Uint8List bytes, String mimeType,
       {String text = ''}) async {
     try {
@@ -95,4 +101,3 @@ class ShareFilesAndScreenshotWidgets {
     }
   }
 }
-
