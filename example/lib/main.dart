@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      child: RaisedButton(
+                      child: ElevatedButton(
                           child: Text("Take Screenshot!"),
                           onPressed: () {
                             ShareFilesAndScreenshotWidgets()
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           }),
                     ),
                     Container(
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text("Share Screenshot!"),
                             onPressed: () {
                               ShareFilesAndScreenshotWidgets().shareScreenshot(
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   text: "This is the caption!");
                             })),
                     Container(
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text("Share Image!"),
                             onPressed: () async {
                               ByteData bytes =
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   text: "This is the caption!");
                             })),
                     Container(
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text("Share Video!"),
                             onPressed: () async {
                               ByteData bytes =
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   text: "This is the caption!");
                             })),
                     Container(
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text("Share Audio!"),
                             onPressed: () async {
                               ByteData bytes =
