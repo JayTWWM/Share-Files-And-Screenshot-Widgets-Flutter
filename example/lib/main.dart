@@ -83,31 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      child: ElevatedButton(
-                          child: Text("Take Screenshot!"),
-                          onPressed: () {
-                            ShareFilesAndScreenshotWidgets()
-                                .takeScreenshot(previewContainer, originalSize)
-                                .then((Image value) {
-                              setState(() {
-                                _image = value;
-                              });
-                            });
-                          }),
-                    ),
-                    Container(
-                        child: ElevatedButton(
-                            child: Text("Share Screenshot!"),
-                            onPressed: () {
-                              ShareFilesAndScreenshotWidgets().shareScreenshot(
-                                  previewContainer,
-                                  originalSize,
-                                  "Title",
-                                  "Name.png",
-                                  "image/png",
-                                  text: "This is the caption!");
-                            })),
-                    Container(
                         child: ElevatedButton(
                             child: Text("Share Image!"),
                             onPressed: () async {
