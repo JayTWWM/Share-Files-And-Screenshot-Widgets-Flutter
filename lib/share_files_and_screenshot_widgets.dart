@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
-import 'dart:ui' as ui;
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -39,7 +36,7 @@ class ShareFilesAndScreenshotWidgets {
     _channel.invokeMethod('file', argsMap);
   }
 
-  /// wirting files in temporary directory
+  /// writing files in temporary directory
   static Future<void> files(
       String title, Map<String, List<int>> files, String mimeType,
       {String text = ''}) async {
@@ -58,37 +55,6 @@ class ShareFilesAndScreenshotWidgets {
     }
 
     _channel.invokeMethod('files', argsMap);
-  }
-
-  /// takes screenshot of the widget and returns Image
-  Future<Image> takeScreenshot(
-      GlobalKey previewContainer, int originalSize) async {
-    RenderRepaintBoundary boundary =
-        previewContainer.currentContext.findRenderObject();
-    double pixelRatio = originalSize /
-        MediaQuery.of(previewContainer.currentContext).size.width;
-    ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-    ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-    Uint8List pngBytes = byteData.buffer.asUint8List();
-    return Image.memory(pngBytes.buffer.asUint8List());
-  }
-
-  /// takes screenshot and invokes share
-  shareScreenshot(GlobalKey previewContainer, int originalSize, String title,
-      String name, String mimeType,
-      {String text = ''}) async {
-    RenderRepaintBoundary boundary =
-        previewContainer.currentContext.findRenderObject();
-    double pixelRatio = originalSize /
-        MediaQuery.of(previewContainer.currentContext).size.width;
-    ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-    ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-    Uint8List pngBytes = byteData.buffer.asUint8List();
-    try {
-      await file(title, name, pngBytes, mimeType, text: text);
-    } catch (e) {
-      print('error while sharing: $e');
-    }
   }
 
   /// share any type of file using this function
