@@ -71,9 +71,9 @@ class ShareFilesAndScreenshotWidgets {
         currentContext.findRenderObject() as RenderRepaintBoundary;
     double pixelRatio = originalSize / MediaQuery.of(currentContext).size.width;
     ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-    ByteData byteData = await (image.toByteData(format: ui.ImageByteFormat.png)
-        as FutureOr<ByteData>);
-    Uint8List pngBytes = byteData.buffer.asUint8List();
+    ByteData? byteData =
+        await (image.toByteData(format: ui.ImageByteFormat.png));
+    Uint8List pngBytes = byteData!.buffer.asUint8List();
     return Image.memory(pngBytes.buffer.asUint8List());
   }
 
@@ -89,9 +89,9 @@ class ShareFilesAndScreenshotWidgets {
         currentContext.findRenderObject() as RenderRepaintBoundary;
     double pixelRatio = originalSize / MediaQuery.of(currentContext).size.width;
     ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-    ByteData byteData = await (image.toByteData(format: ui.ImageByteFormat.png)
-        as FutureOr<ByteData>);
-    Uint8List pngBytes = byteData.buffer.asUint8List();
+    ByteData? byteData =
+        await (image.toByteData(format: ui.ImageByteFormat.png));
+    Uint8List pngBytes = byteData!.buffer.asUint8List();
     try {
       await file(title, name, pngBytes, mimeType, text: text);
     } catch (e) {
