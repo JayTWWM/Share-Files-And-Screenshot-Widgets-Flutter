@@ -61,15 +61,19 @@ class ShareFilesAndScreenshotWidgets {
   }
 
   /// takes screenshot of the widget and returns Image
-  Future<Image> takeScreenshot(
+  Future<Image?> takeScreenshot(
       GlobalKey previewContainer, int originalSize) async {
+    final currentContext = previewContainer.currentContext;
+    if (currentContext == null) {
+      return null;
+    }
     RenderRepaintBoundary boundary =
-        previewContainer.currentContext.findRenderObject();
-    double pixelRatio = originalSize /
-        MediaQuery.of(previewContainer.currentContext).size.width;
+        currentContext.findRenderObject() as RenderRepaintBoundary;
+    double pixelRatio = originalSize / MediaQuery.of(currentContext).size.width;
     ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-    ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-    Uint8List pngBytes = byteData.buffer.asUint8List();
+    ByteData? byteData =
+        await (image.toByteData(format: ui.ImageByteFormat.png));
+    Uint8List pngBytes = byteData!.buffer.asUint8List();
     return Image.memory(pngBytes.buffer.asUint8List());
   }
 
@@ -77,13 +81,17 @@ class ShareFilesAndScreenshotWidgets {
   shareScreenshot(GlobalKey previewContainer, int originalSize, String title,
       String name, String mimeType,
       {String text = ''}) async {
+    final currentContext = previewContainer.currentContext;
+    if (currentContext == null) {
+      return;
+    }
     RenderRepaintBoundary boundary =
-        previewContainer.currentContext.findRenderObject();
-    double pixelRatio = originalSize /
-        MediaQuery.of(previewContainer.currentContext).size.width;
+        currentContext.findRenderObject() as RenderRepaintBoundary;
+    double pixelRatio = originalSize / MediaQuery.of(currentContext).size.width;
     ui.Image image = await boundary.toImage(pixelRatio: pixelRatio);
-    ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-    Uint8List pngBytes = byteData.buffer.asUint8List();
+    ByteData? byteData =
+        await (image.toByteData(format: ui.ImageByteFormat.png));
+    Uint8List pngBytes = byteData!.buffer.asUint8List();
     try {
       await file(title, name, pngBytes, mimeType, text: text);
     } catch (e) {
