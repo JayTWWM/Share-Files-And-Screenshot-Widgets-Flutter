@@ -24,4 +24,4 @@ Bug Fixes
 
 ## 1.0.6
 
-Added Back Screenshot functionality
+Added Back Screenshot Functionality
