@@ -21,3 +21,7 @@ This pub lets you share any kind of files (csv, mp4, png etc), take screenshot o
 ## 1.0.5
 
 Bug Fixes
+
+## 1.0.6
+
+Added Back Screenshot functionality
