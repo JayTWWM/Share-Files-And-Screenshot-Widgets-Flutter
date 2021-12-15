@@ -94,6 +94,8 @@ public class ShareFilesAndScreenshotWidgetsPlugin implements FlutterPlugin, Acti
         String fileProviderAuthority = activeContext.getPackageName() + PROVIDER_AUTH_EXT;
         Uri contentUri = FileProvider.getUriForFile(activeContext, fileProviderAuthority, file);
         shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+        // add email subject using title parameter
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT,title);
         // add optional text
         if (!text.isEmpty()) shareIntent.putExtra(Intent.EXTRA_TEXT, text);
 
